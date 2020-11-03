@@ -1,0 +1,150 @@
+<div class="row justify-content-center align-items-center">
+  <!--<div class="col-md-3 col-sm-1"></div>-->
+  <div class="col-lg-6 col-md-10 col-sm-12 col-12" style="">
+    <form [formGroup]="itemForm"  class="form-horizontal" action="index.html" style="margin-bottom: 50px;" >
+
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+        <img src="https://itanhv.github.io/ebayImage/ebayLogo.jpg" style="max-width:90%; padding-top: 20px; display:block; margin-left: auto; margin-right: auto;" alt="">
+      </div>
+    </div>
+
+    <div class="row form-group  align-items-center">
+      <div class="col-lg-2 col-md-2 col-sm-12" >
+        <label for="keywords" class="control-label form-labels fit-content col-form-label">Key words<div class="red">*</div></label>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <div class="row">
+          <div class="col-12">
+            <input class="form-control" formControlName="keywords" [value]="" type="text" name="keywords" id="keywords" placeholder="Enter keywords">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row form-group align-items-center">
+      <div class="col-lg-2 col-md-2 col-sm-12">
+        <label for="Price Range" class="control-label form-labels col-form-label">Price range</label>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12" >
+        <div class="row" >
+          <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <input class=" form-control" formControlName="MinPrice" [value] = "" type="number" name="MinPrice" id="MinPrice" placeholder="Min Price" >
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <input class="form-control" formControlName="MaxPrice" [value] = "" type="number" name="MaxPrice" id="MaxPrice" placeholder="Max Price" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row form-group align-items-center form-row" >
+      <div class="col-lg-2 col-md-2 col-sm-12">
+        <label for="Condition" class="control-label form-labels col-form-label">Condition</label>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12 ">
+        <div class="row" >
+          <div class="col-12">
+            <input type="checkbox" class="formConrol formInput" formControlName="new" id="new" name="new" value="new" >
+            <label for="new" class="form-check-label form-labels">New</label>
+
+            <input type="checkbox" name="used" value="used" class="formControl formInput" formControlName="used" id="used">
+            <label for="used" class="form-check-label form-labels">Used</label>
+
+            <input type="checkbox" name="verygood" value="verygood" class="formControl formInput" formControlName="verygood" id="verygood">
+            <label for="verygood" class="form-check-label form-labels">Very good</label>
+
+            <input type="checkbox" name="good" value="good" class="formControl formInput" formControlName="good" id="good">
+            <label for="good" class="form-check-label form-labels">Good</label>
+
+            <input type="checkbox" name="acceptable" value="acceptable" class="formControl formInput" formControlName="acceptable" id="acceptable">
+            <label for="acceptable" class="form-check-label form-labels">Acceptable</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row form-group align-items-center form-row">
+      <div class="col-lg-2 col-md-2 col-sm-12">
+        <label for="seller" class="control-label form-labels col-form-label" >Seller</label>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <div class="row">
+          <div class="col-12">
+            <input type="checkbox" id="ReturnsAcceptedOnly" name="ReturnsAcceptedOnly" value="returns" class="formControl formInput" formControlName="ReturnsAcceptedOnly">
+            <label for="ReturnsAcceptedOnly" class="form-check-label form-labels">Returns Accepted</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row form-group align-items-center form-row">
+      <div class="col-lg-2 col-md-2 col-sm-12">
+        <label for="shipping" class="control-label form-labels col-form-label">Shipping</label>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <div class="row">
+          <div class="col-12">
+            <input type="checkbox" id="freeShipping" name="freeShipping" value="freeShipping" class="formControl formInput" formControlName="FreeShippingOnly">
+            <label for="freeShipping" class="form-check-label form-labels">Free</label>
+            <input type="checkbox" id="expeditedShipping" name="expeditedShipping" value="expeditedShipping" class="formControl formInput" formControlName="ExpeditedShippingType">
+            <label for="expeditedShipping" class="form-check-label form-labels">Expedited</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row form-group  align-items-center">
+      <div class="col-lg-2 col-md-2 col-sm-12" >
+        <label for="sortOrder" class="control-label form-labels fit-content col-form-label">Sort Order</label>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <select class="custom-select formControl fit-content" name="sortOrder" id="sortOrder" placeholder="Enter keywords" formControlName="sortOrder">
+          <option value="BestMatch" [selected] = "true" >BestMatch</option>
+          <option value="CurrentPriceHighest" >CurrentPriceHighest</option>
+          <option value="PricePlusShippingHighest">PricePlusShippingHighest</option>
+          <option value="PricePlusShippingLowest">PricePlusShippingLowest</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row form-group align-items-center" style="text-align: right;">
+      <div class="col-sm-12">
+        <button class="btn btn-primary search-button" type="" (click)="onSubmit1()">
+          <span class="material-icons button-icons">search</span>
+          <span>Search</span>
+        </button>
+        <button class="btn btn-primary clear-button" type="" (click)="clearForm()">
+          <span class="material-icons button-icons">clear_all</span>
+          <div class="clear" style="display: inline-block">Clear</div>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="row no-gutters" style="" *ngIf="emptyKeywords()">
+    <div class="col-sm-12 validation-errors">
+      Please enter a keyword
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col-sm-12 validation-errors" *ngIf="priceNegative()">
+      Please use appropriate values for minPrice/maxPrice
+    </div>
+  </div>
+
+  </div>
+  <!--<div class="col-md-3 col-sm-1"></div>-->
+</div>
+<!--<app-item-card [items] = "this.itemsReceived"></app-item-card>-->
+<div style="width: 100%; ">
+  <ng-container *ngComponentOutlet="currentComponent"></ng-container>
+</div>

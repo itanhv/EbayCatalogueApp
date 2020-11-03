@@ -1,0 +1,36 @@
+.form-labels{
+  font-weight: 600;
+  font-size: 14px;
+  padding-right: 5px;
+}
+
+.fit-content{
+  width: max-content;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+label{
+  margin: 0px;
+
+}
+
+.search-button{
+  margin-right: 5px;
+  background-color: rgb(53,113,174);
+  border: none;
+}
+
+.search-button:hover{
+  background-color: rgb(53,113,174);
+}
+
+.clear-button{
+  background-color: rgb(101,105,114);
+  border: none;
+}
+
+.clear-button:hover{
+  color: rgb(48,50,55);
+  background-color: rgb(101,105,114);
+}

@@ -1,0 +1,46 @@
+import { Component, OnInit, Input, ViewChild} from '@angular/core';
+import {ItemInfoModel} from '../models/ItemInfoModel';
+import {CallEbayService} from "../call-ebay.service";
+
+@Component({
+  selector: 'app-item-card',
+  templateUrl: './item-card.component.html',
+  styleUrls: ['./item-card.component.css']
+})
+export class ItemCardComponent implements OnInit {
+  items ;
+  searchedKeyword;
+  public isCollapsed = Array<boolean>(100).fill(true);
+  public selectedIndex: number = 0;
+  p: number = 1;
+  displayNoItems = false;
+  noItems = true;
+  item: ItemInfoModel = new ItemInfoModel({
+    title: "iphone",
+    Image: "www.xyz.com",
+    Price: "560$",
+    Location: "USA",
+    Condition: "New",
+    ShippingCost:"10$",
+    ShippingType: "Expedited"
+
+  });
+
+
+  constructor(private callEbay : CallEbayService) { }
+
+  ngOnInit(): void {
+  this.callEbay.returnedItems.subscribe((returnedItems)=>{
+    console.log("subsribtion")
+    this.searchedKeyword = returnedItems['keywords'];
+    this.items = returnedItems['sendItems'];
+    this.noItems = returnedItems['noItems'];
+    this.displayNoItems = returnedItems['noItems'];
+  });
+  }
+
+  openTabs(i,id){
+    this.isCollapsed[this.items.indexOf(i)] = !this.isCollapsed[this.items.indexOf(i)];
+  }
+
+}

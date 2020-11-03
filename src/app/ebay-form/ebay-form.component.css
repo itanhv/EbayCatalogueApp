@@ -1,0 +1,105 @@
+/*@media (min-width: 576px) { ... }
+
+/*Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+/* Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }*/
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+.form-labels{
+  font-weight: 600;
+  font-size: 14px;
+  padding-right: 5px;
+}
+
+.fit-content{
+  min-width: max-content;
+  min-width: fit-content;
+  white-space: nowrap;
+}
+
+label{
+  margin: 0px;
+}
+
+.search-button{
+  margin-right: 5px;
+  background-color: rgb(53,113,174);
+  border: none;
+}
+
+.search-button:hover{
+  background-color: rgb(53,113,174);
+}
+
+.clear-button{
+  background-color: rgb(101,105,114);
+  border: none;
+}
+
+.clear-button:hover div{
+  color: rgb(48,50,55);
+}
+
+.validation-errors{
+  background-color: rgb(250,248,200);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.row-checkbox{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.formInput{
+  margin-top:3px;
+  margin-right: 3px;
+}
+
+.form-row{
+  margin-bottom: 7px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(164, 204, 255, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(164, 210, 255, 0.8);
+  outline: 0 none;
+}
+.red{
+  display: inline-block;
+  color: red;
+}
+
+.button-icons{
+  vertical-align: middle;
+
+}
+
+.clear-button.button-icons{
+  color: white;
+}

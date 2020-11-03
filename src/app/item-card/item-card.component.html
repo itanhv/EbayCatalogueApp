@@ -1,0 +1,159 @@
+<div class="" style="" >
+  <div class="row justify-content-center align-items-center no-gutters"  *ngIf="displayNoItems">
+    <div class="col-lg-6 col-md-10 col-sm-12 col-12 validation-errors">
+      No exact matches found
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center align-items-center" *ngIf="!noItems">
+  <div class="col-lg-8 col-md-12 col-sm-12">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm">
+        <div style="display: inline-block; font-size: 20px; text-align: left; margin: 7px; margin-left:0px;">Results for {{searchedKeyword}}</div>
+      </div>
+      <div class="col-xs d-lg-flex d-md-flex d-sm-flex d-none">
+        <pagination-controls class="my-pagination" id="foo" maxSize="10" direction-links="true" responsive="false" (pageChange)="p = $event" style="float: right;"></pagination-controls>
+      </div>
+      <div class="col-xs d-lg-none d-md-none d-sm-none">
+        <pagination-controls class="my-pagination" id="foo" maxSize="5" direction-links="true" responsive="false" (pageChange)="p = $event" style="float: right;"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let item of items | paginate: { id: 'foo', itemsPerPage: 5,currentPage: p}" class="row justify-content-center align-items-center" style="margin-bottom: 10px; margin-right: -5px; margin-left: -5px;" id={{items.indexOf(item)}}>
+  <div class=" item-card-bg col-lg-8 col-md-12 col-sm-12 " >
+    <div class="row">
+      <div class="col-lg-2 col-md-3 col-sm-3 ">
+        <img *ngIf="item.image == 'https://thumbs1.ebaystatic.com/pict/04040_0.jpg'" src="https://itanhv.github.io/ebayImage/ebayLogo.jpg" alt="" class="item-img">
+        <img *ngIf="item.image != 'https://thumbs1.ebaystatic.com/pict/04040_0.jpg'" src="{{item.image}}" alt="" class="item-img">
+      </div>
+      <div class="col-lg-10 col-md-9 col-sm-9 ">
+        <a href="{{item.url}}" class="item-card-title" target="_blank">{{item.title}}</a>
+        <div class="price"><b>Price: </b>${{item.price}}</div>
+        <div class="location">{{item.location}}</div>
+        <button type="button" class="btn btn-light show-hide-details" style="font-size: 14px; padding: 5px; margin-left: 10px;" [hidden]="!isCollapsed[items.indexOf(item)]" (click)="openTabs(item,items.indexOf(item))">Show Details</button>
+        <button type="button" class="btn btn-light show-hide-details" style="font-size: 14px; padding: 5px; margin-left: 10px;" [hidden]="isCollapsed[items.indexOf(item)]" (click)="openTabs(item,items.indexOf(item))">Hide Details</button>
+        <div class="row">
+          <div  id="collapseExample" *ngIf="!isCollapsed[items.indexOf(item)]" class="tabs col-lg-12 col-md-12 col-sm-12" style="overflow-x: hidden;">
+            <mat-tab-group mat-align-tabs="start" #tabs >
+              <mat-tab label="Basic Info" id="firstTab">
+                <div class="container">
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-5 ">
+                      <b>Category Name</b>
+                    </div>
+                    <div class="col-lg-10 col-md-8 col-sm-8 col-7 px-2 px-lg-2 px-sm-0 px-md-0">
+                      {{item.categoryName}}
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-5">
+                      <b>Condition</b>
+                    </div>
+                    <div class="col-lg-10 col-md-8 col-sm-8 col-7 px-2 px-lg-2 px-sm-0 px-md-0">
+                      {{item.condition}}
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Shipping Info">
+                <div class="container">
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-7 py-1">
+                      <b>ShippingType</b>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-6 col-5 px-2 px-lg-3 px-sm-3 px-md-3">
+                      {{item.shippingType}}
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-7 py-1">
+                      <b>Shipping Cost</b>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-6 col-5 px-2 px-lg-3 px-sm-3 px-md-3">
+                      {{item.shippingCost}}
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-7 py-1">
+                      <b>Shiptolocations</b>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-6 col-5 px-2 px-lg-3 px-sm-3 px-md-3">
+                      {{item.shipToLocations}}
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-7 py-1">
+                      <b>ExpeditedShipping</b>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-6 col-5 px-2 px-lg-3 px-sm-3 px-md-3">
+                      <span *ngIf="item.expeditedShipping=='true'" class="material-icons check-icon">check</span>
+                      <span *ngIf="item.expeditedShipping=='false'" class="material-icons close-icon">close</span>
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-7 py-1">
+                      <b>OneDayShippingAvailable</b>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-6 col-5 px-2 px-lg-3 px-sm-3 px-md-3">
+                      <span *ngIf="item.oneDayShippingAvailable=='true'" class="material-icons check-icon">check</span>
+                      <span *ngIf="item.oneDayShippingAvailable=='false'" class="material-icons close-icon">close</span>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Listing Info">
+                <div class="container">
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-3 col-sm-5 col-5 pr-0 pr-lg-5 pr-sm-0 pr-md-0">
+                      <b>BestOfferEnabled</b>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-7 col-7 px-2 px-lg-3 px-sm-3 px-md-3">
+                      <span *ngIf="item.bestOfferEnabled=='true'" class="material-icons check-icon">check</span>
+                      <span *ngIf="item.bestOfferEnabled=='false'" class="material-icons close-icon">close</span>
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-3 col-sm-5 col-5 pr-0 pr-lg-5 pr-sm-0 pr-md-0">
+                      <b>BuyItNowAvailable</b>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-7 col-7 px-2 px-lg-3 px-sm-3 px-md-3">
+                      <span *ngIf="item.buyItNowAvailable=='true'" class="material-icons check-icon">check</span>
+                      <span *ngIf="item.buyItNowAvailable=='false'" class="material-icons close-icon">close</span>
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-3 col-sm-5 col-5 pr-0 pr-lg-5 pr-sm-0 pr-md-0">
+                      <b>ListingType</b>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-7 col-7 px-2 px-lg-3 px-sm-3 px-md-3">
+                      {{item.listingType}}
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-3 col-sm-5 col-5 py-2 pr-0 pr-lg-5 pr-sm-0 pr-md-0">
+                      <b>Gift</b>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-7 col-7 px-2 px-lg-3 px-sm-3 px-md-3">
+                      <span *ngIf="item.gift=='true'" class="material-icons check-icon">check</span>
+                      <span *ngIf="item.gift=='false'" class="material-icons close-icon">close</span>
+                    </div>
+                  </div>
+                  <div class="row detail-padding no-gutters">
+                    <div class="col-lg-2 col-md-3 col-sm-5 col-5 pr-0 pr-lg-5 pr-sm-0 pr-md-0">
+                      <b>WatchCount</b>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-7 col-7 px-2 px-lg-3 px-sm-3 px-md-3">
+                      {{item.WatchCount}}
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

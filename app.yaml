@@ -1,0 +1,11 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+default_expiration: 1s
+handlers:
+
+- url: /
+  static_files: ebay-hw8/index.html
+  upload: ebay-hw8/index.html
+- url: /
+  static_dir: ebay-hw8
